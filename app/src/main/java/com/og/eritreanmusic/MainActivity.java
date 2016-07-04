@@ -39,14 +39,8 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
     Button button8;
     Button button9;
     Button button10;
-    Button button11;
-  Button button12;
-    Button button13;
-    Button button14;
-    Button button15;
- /*   Button button16;
-*/
 
+    int nextPage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,20 +60,12 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
          addListenerOnButton8();
         addListenerOnButton9();
         addListenerOnButton10();
-        addListenerOnButton11();
-       addListenerOnButton12();
-        addListenerOnButton13();
-        addListenerOnButton14();
-        addListenerOnButton15();
- /*       addListenerOnButton16();
-*/
+
+        pagechange();
 
         interAd = new InterstitialAd(this);
         interAd.setAdUnitId("ca-app-pub-9251526379542850/4690296122");
-
-
 //		AdView adView =(AdView) findViewById(R.id.adView);
-
 
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
@@ -94,15 +80,8 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
         });
 //		adView.loadAd(adRequest);
 
-
-
-
-
-
-
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
-
 
 
     }
@@ -120,7 +99,13 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                nextVideo(player);
+                if(nextPage == 0)
+                    nextVideo(player);
+                if(nextPage == 1){
+                    nextVideo10(player);
+                }
+                if(nextPage == 2)
+                    nextVideo20(player);
             }
         });
     }
@@ -129,7 +114,12 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                nextVideo1(player);
+                if(nextPage ==0)
+                    nextVideo1(player);
+                if(nextPage ==1)
+                    nextVideo11(player);
+                if(nextPage == 2)
+                    nextVideo21(player);
             }
         });
     }
@@ -138,141 +128,137 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                nextVideo2(player);
+                if(nextPage ==0)
+                    nextVideo2(player);
+                if(nextPage ==1)
+                    nextVideo12(player);
+                if(nextPage == 2)
+                    nextVideo22(player);
             }
         });
     }
-        public void addListenerOnButton3() {
-            button3 = (Button) findViewById(R.id.button3);
-            button3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View arg0) {
+    public void addListenerOnButton3() {
+        button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
                     nextVideo3(player);
-                }
-            });
-        }
-        public void addListenerOnButton4() {
-            button4 = (Button) findViewById(R.id.button4);
-            button4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View arg0) {
+                if(nextPage ==1)
+                    nextVideo13(player);
+                if(nextPage == 2)
+                    nextVideo23(player);
+            }
+        });
+    }
+    public void addListenerOnButton4() {
+        button4 = (Button) findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
                     nextVideo4(player);
-                }
-            });
-        }
-            public void addListenerOnButton5() {
-                button5 = (Button) findViewById(R.id.button5);
-                button5.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        nextVideo5(player);
-                    }
-                });
+                if(nextPage ==1)
+                    nextVideo14(player);
+                if(nextPage == 2)
+                    nextVideo24(player);
             }
-            public void addListenerOnButton6() {
-                button6 = (Button) findViewById(R.id.button6);
-                button6.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        nextVideo6(player);
-                    }
-                });
+        });
+    }
+    public void addListenerOnButton5() {
+        button5 = (Button) findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
+                    nextVideo5(player);
+                if(nextPage ==1)
+                    nextVideo15(player);
+                if(nextPage == 2)
+                    nextVideo25(player);
             }
-            public void addListenerOnButton7() {
-                button7 = (Button) findViewById(R.id.button7);
-                button7.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        nextVideo7(player);
-                    }
-                });
+        });
+    }
+    public void addListenerOnButton6() {
+        button6 = (Button) findViewById(R.id.button6);
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
+                    nextVideo6(player);
+                if(nextPage ==1)
+                    nextVideo16(player);
+                if(nextPage == 2)
+                    nextVideo26(player);
             }
-            public void addListenerOnButton8() {
-                button8 = (Button) findViewById(R.id.button8);
-                button8.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        nextVideo8(player);
-                    }
-                });
+        });
+    }
+    public void addListenerOnButton7() {
+        button7 = (Button) findViewById(R.id.button7);
+        button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
+                    nextVideo7(player);
+                if(nextPage ==1)
+                    nextVideo17(player);
+                if(nextPage == 2)
+                    nextVideo27(player);
             }
-            public void addListenerOnButton9() {
-                button9 = (Button) findViewById(R.id.button9);
-                button9.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View arg0) {
-                        nextVideo9(player);
-                    }
-                });
+        });
+    }
+    public void addListenerOnButton8() {
+        button8 = (Button) findViewById(R.id.button8);
+        button8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
+                    nextVideo8(player);
+                if(nextPage ==1)
+                    nextVideo18(player);
+                if(nextPage == 2)
+                    nextVideo28(player);
+
             }
+        });
+    }
+    public void addListenerOnButton9() {
+        button9 = (Button) findViewById(R.id.button9);
+        button9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                if(nextPage ==0)
+                    nextVideo9(player);
+                if(nextPage ==1)
+                    nextVideo19(player);
+                if(nextPage == 2)
+                    nextVideo29(player);
+            }
+        });
+    }
     public void addListenerOnButton10() {
                           button10 = (Button) findViewById(R.id.button10);
                           button10.setOnClickListener(new View.OnClickListener() {
                               @Override
                               public void onClick(View arg0) {
-                                  nextVideo10(player);
+                                 forward();
                               }
                           });
                   }
-    public void addListenerOnButton11() {
-                          button11 = (Button) findViewById(R.id.button11);
-                          button11.setOnClickListener(new View.OnClickListener() {
-                              @Override
-                              public void onClick(View arg0) {
-                                  nextVideo11(player);
-                              }
-                          });
-                      }
-    public void addListenerOnButton12() {
-                              button12 = (Button) findViewById(R.id.button12);
-                              button12.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View arg0) {
-                                      nextVideo12(player);
-                                  }
-                              });
-                          }
-    public void addListenerOnButton13() {
-        button13 = (Button) findViewById(R.id.button13);
-        button13.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View arg0) {nextVideo13(player);
-                                  }
-                              });
-                          }
-    public void addListenerOnButton14() {
-        button14 = (Button) findViewById(R.id.button14);
-        button14.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View arg0) {nextVideo14(player);
-                                  }
-                              });
-                          }
-    public void addListenerOnButton15() {
 
-        button15 = (Button) findViewById(R.id.button15);
+    public void forward(){
 
-        button15.setOnClickListener(new View.OnClickListener() {
-                                  @Override
-                                  public void onClick(View arg0) {nextVideo15(player);
-                                  }
-                              });
+        if(nextPage==4)
+        {
+            nextPage = 0;
+            pagechange();
+        }
+           else {
+            nextPage++;
+            pagechange();
+        }
 
-                          }
-
-
-/*
-    public void addListenerOnButton16() {
-        button16 = (Button) findViewById(R.id.button16);
-        button16.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                nextVideo(player);
-            }
-        });
     }
-*/
-
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         this.player = player;
@@ -332,23 +318,80 @@ public class MainActivity extends YouTubeBaseActivity implements YouTubePlayer.O
 
     */
 
-    public void nextVideo(YouTubePlayer player){player.cueVideo("CbrMAALZOj0");}
-    public void nextVideo1(YouTubePlayer player){player.cueVideo("maQsC09UzL4");}
-    public void nextVideo2(YouTubePlayer player){player.cueVideo("Ad0G3BBSBpc");}
-    public void nextVideo3(YouTubePlayer player){player.cueVideo("MPuWM_EdE7A");}
-    public void nextVideo4(YouTubePlayer player){player.cueVideo("CEz0SndbVZY");}
-    public void nextVideo5(YouTubePlayer player){player.cueVideo("8VVhsc3bKyI");}
-   public void nextVideo6(YouTubePlayer player){player.cueVideo("sqUyAEK-HQM");}
-    public void nextVideo7(YouTubePlayer player){player.cueVideo("BimRyZU2v10");}
-     public void nextVideo8(YouTubePlayer player){player.cueVideo("eJmjDzqMQyE");}
-    public void nextVideo9(YouTubePlayer player){player.cueVideo("CtNOXXhmp3Q");}
-    public void nextVideo10(YouTubePlayer player){player.cueVideo("wzHHizYj-bM");}
-    public void nextVideo11(YouTubePlayer player){player.cueVideo("g0M1FbhfBjQ");}
-    public void nextVideo12(YouTubePlayer player){player.cueVideo("h_-lvjoKGQs");}
-    public void nextVideo13(YouTubePlayer player){player.cueVideo("Rbp1iYYktNM");}
-    public void nextVideo14(YouTubePlayer player){player.cueVideo("p06hKfRwvHw");}
-    public void nextVideo15(YouTubePlayer player){player.cueVideo("AJOhThfT5hA");}
-    public void nextVideo16(YouTubePlayer player){player.cueVideo("BimRyZU2v10");}
+    public void nextVideo(YouTubePlayer player){player.cueVideo("Oi16AhHE4Rg");}
+    public void nextVideo1(YouTubePlayer player){player.cueVideo("4mxNB0XqMzQ");}
+    public void nextVideo2(YouTubePlayer player){player.cueVideo("tVq9-ikzGHM");}
+    public void nextVideo3(YouTubePlayer player){player.cueVideo("bnDAU0UrMEU");}
+    public void nextVideo4(YouTubePlayer player){player.cueVideo("Ix6Xa-NE9vE");}
+    public void nextVideo5(YouTubePlayer player){player.cueVideo("e6avrxvSZTM");}
+    public void nextVideo6(YouTubePlayer player){player.cueVideo("t_Ov9A9Yb58");}
+    public void nextVideo7(YouTubePlayer player){player.cueVideo("qBZwzKkiP4I");}
+    public void nextVideo8(YouTubePlayer player){player.cueVideo("HD9Oym1ZRao");}
+    public void nextVideo9(YouTubePlayer player){player.cueVideo("y0bFEC3O60g");}
 
 
-}
+    public void nextVideo10(YouTubePlayer player){player.cueVideo("yCS4SurF2XU");}
+    public void nextVideo11(YouTubePlayer player){player.cueVideo("PVYKGtiPuQI");}
+    public void nextVideo12(YouTubePlayer player){player.cueVideo("4hMs1tiqjCc");}
+    public void nextVideo13(YouTubePlayer player){player.cueVideo("Rdn5VkVvh0M");}
+    public void nextVideo14(YouTubePlayer player){player.cueVideo("wzHHizYj-bM");}
+    public void nextVideo15(YouTubePlayer player){player.cueVideo("g0M1FbhfBjQ");}
+    public void nextVideo16(YouTubePlayer player){player.cueVideo("h_-lvjoKGQs");}
+    public void nextVideo17(YouTubePlayer player){player.cueVideo("Rbp1iYYktNM");}
+    public void nextVideo18(YouTubePlayer player){player.cueVideo("p06hKfRwvHw");}
+
+    public void nextVideo19(YouTubePlayer player){player.cueVideo("AJOhThfT5hA");}
+
+    public void nextVideo20(YouTubePlayer player){player.cueVideo("CbrMAALZOj0");}
+    public void nextVideo21(YouTubePlayer player){player.cueVideo("maQsC09UzL4");}
+    public void nextVideo22(YouTubePlayer player){player.cueVideo("Ad0G3BBSBpc");}
+    public void nextVideo23(YouTubePlayer player){player.cueVideo("MPuWM_EdE7A");}
+    public void nextVideo24(YouTubePlayer player){player.cueVideo("CEz0SndbVZY");}
+    public void nextVideo25(YouTubePlayer player){player.cueVideo("8VVhsc3bKyI");}
+    public void nextVideo26(YouTubePlayer player){player.cueVideo("sqUyAEK-HQM");}
+    public void nextVideo27(YouTubePlayer player){player.cueVideo("BimRyZU2v10");}
+    public void nextVideo28(YouTubePlayer player){player.cueVideo("eJmjDzqMQyE");}
+    public void nextVideo29(YouTubePlayer player){player.cueVideo("CtNOXXhmp3Q");}
+
+
+
+    public void pagechange(){
+        if(nextPage == 0){
+            button.setBackgroundResource(R.drawable.tesfalemarefainekorchachbeqaakele);
+            button1.setBackgroundResource(R.drawable.nahomyohannesmestezeyedbti);
+            button2.setBackgroundResource(R.drawable.danaityohannesekltiye);
+            button3.setBackgroundResource(R.drawable.millenhailunifatoena);
+            button4.setBackgroundResource(R.drawable.ftsumberakiziyaday);
+            button5.setBackgroundResource(R.drawable.edenkeseteshifoney);
+            button6.setBackgroundResource(R.drawable.saburabdumuna);
+            button7.setBackgroundResource(R.drawable.akilaseatu);
+            button8.setBackgroundResource(R.drawable.edenkesetenbel);
+            button9.setBackgroundResource(R.drawable.yohanneshabtiab);
+        }
+
+        if(nextPage == 1){
+            button.setBackgroundResource(R.drawable.tedrosmengstuntemer);
+            button1.setBackgroundResource(R.drawable.yelekulanane);
+            button2.setBackgroundResource(R.drawable.tedrosrezene);
+            button3.setBackgroundResource(R.drawable.dendenteklemichael);
+            button4.setBackgroundResource(R.drawable.nehimyazerayadamey);
+            button5.setBackgroundResource(R.drawable.robelhailefiqri);
+            button6.setBackgroundResource(R.drawable.robelmichaelmezekerta);
+            button7.setBackgroundResource(R.drawable.semharyohanneswedi);
+            button8.setBackgroundResource(R.drawable.senaitamineasenifkani);
+            button9.setBackgroundResource(R.drawable.senaitamineleminey);
+        }
+        if(nextPage == 2) {
+            button.setBackgroundResource(R.drawable.nahomyohannesseb);
+            button1.setBackgroundResource(R.drawable.salinatsegaymnada);
+            button2.setBackgroundResource(R.drawable.berakigebremedhinmerat);
+            button3.setBackgroundResource(R.drawable.semharyohannesloms);
+            button4.setBackgroundResource(R.drawable.semharyohannesteberihuni);
+            button5.setBackgroundResource(R.drawable.nahomyohanneskulu);
+            button6.setBackgroundResource(R.drawable.tesfalemarefainekorchach);
+            button7.setBackgroundResource(R.drawable.nahomyohannesysebqtn);
+            button8.setBackgroundResource(R.drawable.dejenkrarey);
+            button9.setBackgroundResource(R.drawable.isaacsimonkchney);
+        }
+    }
+}//https://www.youtube.com/results?search_query=eritrean+music+2016
